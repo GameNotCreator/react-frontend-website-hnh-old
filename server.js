@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 app.use(session({
-    secret: 'REDACTED_SECRET', // Utilisez une clé secrète plus sécurisée dans une application de production
+    secret: process.env.SESSION_SECRET, // Utilisez une clé secrète plus sécurisée dans une application de production
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -33,7 +33,7 @@ app.use(session({
     }
   }));
 
-mongoose.connect('REDACTED_SECRET', {
+mongoose.connect(process.env.MONGODB_URI, {
 useNewUrlParser: true,
 useUnifiedTopology: true
 });

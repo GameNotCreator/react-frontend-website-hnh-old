@@ -12,8 +12,8 @@ module.exports = (db) => {
    const transporter = nodemailer.createTransport({
       service: 'Outlook365', // Pour utiliser Outlook/Office365
       auth: {
-        user: 'handh.corp@outlook.com', // Remplacez par votre adresse e-mail Outlook
-        pass: 'REDACTED_SECRET', // Remplacez par votre mot de passe Outlook
+        user: process.env.SMTP_USER, // Remplacez par votre adresse e-mail Outlook
+        pass: process.env.SMTP_PASSWORD, // Remplacez par votre mot de passe Outlook
       },
     });
 
